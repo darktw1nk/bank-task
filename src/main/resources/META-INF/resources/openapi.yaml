@@ -1,0 +1,120 @@
+---
+openapi: 3.0.1
+info:
+  title: Generated API
+  version: "1.0"
+paths:
+  /accounts:
+    get:
+      responses:
+        "200":
+          description: OK
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Account'
+      responses:
+        "200":
+          description: OK
+  /accounts/{id}:
+    get:
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "200":
+          description: OK
+    put:
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Account'
+      responses:
+        "200":
+          description: OK
+    delete:
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "200":
+          description: OK
+  /transactions:
+    get:
+      responses:
+        "200":
+          description: OK
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Transaction'
+      responses:
+        "200":
+          description: OK
+  /transactions/{id}:
+    get:
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "200":
+          description: OK
+components:
+  schemas:
+    BigDecimal:
+      type: number
+    Account:
+      type: object
+      properties:
+        balance:
+          $ref: '#/components/schemas/BigDecimal'
+        id:
+          format: int64
+          type: integer
+        name:
+          type: string
+    TransactionStatus:
+      enum:
+      - SUCCESSFUL
+      - UNSUCCESSFUL
+      type: string
+    Transaction:
+      type: object
+      properties:
+        amount:
+          $ref: '#/components/schemas/BigDecimal'
+        credit:
+          format: int64
+          type: integer
+        debit:
+          format: int64
+          type: integer
+        id:
+          format: int64
+          type: integer
+        status:
+          $ref: '#/components/schemas/TransactionStatus'
