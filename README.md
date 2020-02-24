@@ -29,9 +29,9 @@ Transactions
 POST /accounts
 ``` json
  {
-    "name": "Linus Torvalds,
-    "balance": 55000.00
-  }
+ 	"name": "Linus Torvalds",
+ 	"balance": 55000.00
+ }
 ```
 
 PUT /accounts/{id}
